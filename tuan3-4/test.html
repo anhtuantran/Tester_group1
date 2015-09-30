@@ -1,0 +1,51 @@
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.19.0.css" />
+<script src="http://code.jquery.com/qunit/qunit-1.19.0.js"></script>
+<title>Kiem tra so nguyen to</title>
+<script type="text/javascript">		</script>
+</head>
+
+<body>
+	 <div id="qunit"></div>
+	 <div id="qunit-fixture"></div>
+    <script type="text/javascript">
+    (function(){
+    // test unit
+		function nguyento(x){
+		var i,n,nt;
+		if (isNaN(x))
+			if((x>=0)&&(x==2 || x==3)) nt=1;				 
+				if(x==1)nt=0;
+					else{
+						nt=1;
+						for(i=2;i<=Math.sqrt(x);i++){
+							if(x%i==0){
+								nt=0;
+								break;
+							} 
+						} 
+					}
+			
+		return nt;    
+		}
+		
+		
+		test('nguyento()', function() {
+		//n<2&n%2==0||n<2&n%2!=0 return 0;
+			equal(nguyento(1),0, "Passed: x=1  nt = 0");
+		//n=2, n=3 return 1;
+			equal(nguyento(2),1, "Passed: x=2  nt = 1");
+			equal(nguyento(3),1, "Passed: x=3  nt = 1");
+		// n=!2, n>3 &n%2=0 return 0;
+			equal(nguyento(4),0, "Passed: x=4  nt = 0 ");
+		//n=!2, n>3 &n%2!=0 &n%i=0 return 0;
+			equal(nguyento(9),0, "Passed: x=9  nt = 0 ");
+		//n=!2, n>3 &n%2=0 &n%i!=0 return 1;
+			equal(nguyento(5),1, "Passed: x=5  nt = 1 ");
+		});
+})();
+ 
+    </script>
+</body>
+</html>
